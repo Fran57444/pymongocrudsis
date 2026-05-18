@@ -40,21 +40,21 @@ def insertar_documento():
     input("Presione Enter para continuar...")
 
 def actualizar_documento():
-    nombre=input("Ingrese el nombre del alumno a modificar: ")
-    edad=input("Ingrese edad del alumno a modificar: ")
-    resultado=coleccion.find({"nombre":nombre, "edad":edad})
     os.system("cls")
-    for docs in resultado:
-        print(f"""Alumno seleccionado: {docs['nombre']}
-Edad: {docs['edad']}
-Carrera: {docs['carrera']}""")
-    op=input("¿Es correcto? (S/N): ")
-    if op=="S":
-        
-
+    varbus=input("Ingrese la variable que desea buscar (nombre, edad, carrera): ")
+    valor=input("Ingrese el valor que desea buscar: ")
+    nuevovalor=input("Ingrese el nuevo valor: ")
+    coleccion.update_one({varbus:valor}, {"$set":{varbus:nuevovalor}})
+    print(f"Valor actualizado correctamente: {varbus} = {nuevovalor}")
+    input("Presione Enter para continuar...")
 
 def eliminar_documento():
-    print("")
+    os.system("cls")
+    varbus=input("Ingrese la variable que desea buscar (nombre, edad, carrera): ")
+    valor=input("Ingrese el valor que desea buscar: ")
+    coleccion.delete_one({varbus:valor})
+    print(f"Documento con {varbus} = {valor} eliminado correctamente")
+    input("Presione Enter para continuar...")
 
 while True:
     os.system("cls")
